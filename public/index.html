@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>GPS Data Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="description" content="Explore the details of your GPS data">
+  <meta name="keywords" content="GPS">
+  <meta name="author" content="Sanaz Rezahi">
+  <!-- Load jquery, bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="h_image">
+</div>
+
+
+<div class="t_outer">
+    <h1 id="fileLog" >File Log Panel</h1>
+    <p id="status" class="tbody-status">No uploaded files<p>
+    <div class="tableContainer">
+    <table class="filelog">
+      <thead class="fixed">
+        <tr>
+          <th class="firstName" >File Name (Click to download)</th>
+          <th class="version">Version</th>
+          <th class="creator">Creator</th>
+          <th class="numW">Number of Waypoints</th>
+          <th class="numR">Number of Routes</th>
+          <th class="numT">Number of Tracks</th>
+        </tr>
+      </thead>
+      <div class="tbody-div">
+        <tbody id="tbody-filelog">
+      </div>
+    </table>
+    </div>
+
+    <form ref='uploadForm'
+      id='uploadForm'
+      enctype="multipart/form-data"
+      method = "post"
+      action = "/upload">
+      <input type="file" id="chooseFile" name="uploadFile" class="choose">
+      <input type="submit" id="submitFile" class="upload" value="Upload GPX File" disabled=true>
+    </form>
+
+    <div class="create">
+      <input type="button" id="create" class="createGDOC" value="Create GPX">
+    </div>
+    <!--Pop up create gpx-->
+    <div class="createPop" id="createForm">
+      <form class="form-container">
+        <h1>Create GPX</h1>
+
+        <label for="name"><b>File Name</b></label>
+        <input type="text" placeholder="Enter .gpx file name" name="name" id="enterFileName">
+        <label for="creator"><b>Creator</b></label>
+        <input type="text" placeholder="Enter creator" name="creator" id="enterCreator">
+
+        <a class="btn createGPXBtn" id="createBtn" href="#close">Create GPX</a>
+        <input type="button" class="closeBtn" id="closeGPX" value="Close">
+      </form>
+    </div>
+
+
+    <h1 class="gps">GPS View Panel</h1>
+    <p>To view contents, select a file:
+    <select class="drop" id="selectGPX">
+    <option disabled selected>Select File</option>
+    </select>
+    </p>
+
+    <!--Add Route-->
+    <div class="addRoute">
+      <input type="button" id="addRoute" class="routeAdd" value="Add Route">
+    </div>
+    <!--Pop up add route-->
+    <div class="addRPop" id="addRForm">
+      <form class="form-container">
+        <h1>Add Route</h1>
+        <select class="dropAdd" id="selectAdd">
+        <option disabled selected>Select File</option>
+        </select>
+
+        <label for="nameR"><b>Route Name</b></label>
+        <input type="text" placeholder="Enter the route name" name="nameR" id="enterRName">
+
+        <h4>Add Waypoint to Route</h4>
+        <p>(optional)</p>
+
+        <label for="long"><b>Longitude</b></label>
+        <input type="text" placeholder="Enter longitude" name="long" id="enterLong">
+        <label for="lat"><b>Latitude</b></label>
+        <input type="text" placeholder="Enter latitude" name="lat" id="enterLat">
+        <p>*NOTE: Make sure to add all waypoints before adding the route</p>
+        <a class="btn addWBtn" id="wayBtn" href="#close">Add Waypoint to Route</a>
+        <a class="btn addRBtn" id="routeBtn" href="#close">Add Route</a>
+
+        <input type="button" class="closeBtn" id="closeR" value="Close">
+      </form>
+    </div>
+
+    <!--GPX View Panel-->
+    <div class="tableContainer">
+      <table class="gpsview">
+        <thead>
+        <tr>
+          <th class="comp">Component</th>
+          <th class="name">Name</th>
+          <th class="points">Number of Points</th>
+          <th class="length">Length</th>
+          <th class="loop">Loop</th>
+        </tr>
+        </thead>
+        <div class="tbody-div">
+          <tbody id="tbody-gpsview">
+        </div>
+      </table>
+  </div>
+    <div class=buttons>
+      <input type="button" id="showAttr" class="show" value="Show attributes">
+
+      <!--Rename-->
+      <input type="button" id="rename" class="rename" value="Rename">
+      <div class="renamePop" id="renameForm">
+        <form class="form-container">
+          <h1>Rename</h1>
+
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Enter new name" name="newName" id="enterName">
+
+          <a class="btn renameBtn" id="renameBtn" href="#close">Rename</a>
+          <input type="button" class="closeBtn" id="closeRename" value="Close">
+        </form>
+      </div>
+
+      <select class="chooseRT" id="selectRouteTrack">
+      <option disabled selected>Select Route/Track</option>
+      </select>
+    </div>
+
+    <!--Find Path-->
+    <h1 class="fp">Find Paths Between</h1>
+    <div class="findpath">
+      <table class="findPath">
+        <thead>
+        <tr>
+          <th class="compFP">Component</th>
+          <th class="nameFP">Name</th>
+          <th class="pointsFP">Number of Points</th>
+          <th class="lengthFP">Length</th>
+          <th class="loopFP">Loop</th>
+        </tr>
+        </thead>
+        <div class="pbody-div">
+          <tbody id="pbody-gpsview">
+        </div>
+      </table>
+      <div class="findForm" id="fpForm">
+          <form class="form">
+
+
+            <label for="lati1"><b>Start Latitude</b></label>
+            <input type="text" placeholder="Enter latitude" name="lati1" id="enterLati1">
+            <label for="longi1"><b>Start Longitude</b></label>
+            <input type="text" placeholder="Enter longitude" name="longi1" id="enterLongi1">
+            <br>
+
+            <div class="moveEnd">
+            <label for="lati2"><b>End Latitude</b></label>
+            <input type="text" placeholder="Enter latitude" name="lati2" id="enterLati2">
+            <label for="longi2"><b>End Longitude</b></label>
+            <input type="text" placeholder="Enter longitude" name="longi2" id="enterLongi2">
+          </div>
+            <br>
+            <div class="moveDelta">
+            <label for="delta"><b>Delta</b></label>
+            <input type="text" placeholder="Enter delta" name="delta" id="enterDelta">
+              </div>
+            <br>
+            <div class="moveFind">
+            <a class="btn findBtn" id="findBtn" href="#find_path">Find Path</a>
+          </div>
+          </form>
+      </div>
+    </div>
+
+    <!--Database-->
+    <h1 class="fp">Database</h1>
+    <p>Please make sure to login before using the database.</p>
+    <p class='log' id='logStatus'>Status: logged OFF</p>
+    <a class="btn loginBtn" id="loginBtn" href="#login">Login</a>
+    <a class="btn queryBtn" id="queryBtn" href="#execute_query">Execute Query</a>
+    <select class="dropQuery" id="selectQuery">
+    <option disabled selected>Select Query</option>
+    <option>Display all routes</option>
+    <option>Display the routes from a specific file</option>
+    <option>Display all points of a specific route</option>
+    <option>Display all points from a specific file</option>
+    </select>
+    <div class="query1" id="query1Form">
+      <form class="form-container">
+        <h3>Display all routes</h3>
+        <p>Sort routes by:</p>
+        <select class="dropSort1" id="selectSort1">
+        <option disabled selected>Select Sorting</option>
+        <option>Name</option>
+        <option>Length</option>
+        </select>
+        <a class="btn executeBtn" id="executeBtn1" href="#executing_query">Execute Query</a>
+        <input type="button" class="closeBtn" id="closeQuery1" value="Close">
+      </form>
+    </div>
+    <div class="query2" id="query2Form">
+      <form class="form-container">
+        <h3>Display the routes from a specific file</h3>
+        <p>Sort Routes by:</p>
+        <select class="dropSort2" id="selectSort2">
+        <option disabled selected>Select Sorting</option>
+        <option>Name</option>
+        <option>Length</option>
+        </select>
+        <p class='sF'>Select File:</p>
+        <select class="dropFile" id="selectFile">
+        <option disabled selected>Select File</option>
+        </select>
+        <a class="btn executeBtn" id="executeBtn2" href="#executing_query">Execute Query</a>
+        <input type="button" class="closeBtn" id="closeQuery2" value="Close">
+      </form>
+    </div>
+    <div class="query3" id="query3Form">
+      <form class="form-container">
+        <h3>Display all points of a specific route</h3>
+        <p>Select File:</p>
+        <select class="dropFile2" id="selectFile2">
+        <option disabled selected>Select File</option>
+        </select>
+        <p class='sF'>Select Route:</p>
+        <select class="dropRoute" id="selectRoute">
+        <option disabled selected>Select Route</option>
+        </select>
+        <a class="btn executeBtn" id="executeBtn3" href="#executing_query">Execute Query</a>
+        <input type="button" class="closeBtn" id="closeQuery3" value="Close">
+      </form>
+    </div>
+    <div class="query4" id="query4Form">
+      <form class="form-container">
+        <h3>Display all points from a specific file</h3>
+        <p>Select File:</p>
+        <select class="dropFile3" id="selectFile3">
+        <option disabled selected>Select File</option>
+        </select>
+        <a class="btn executeBtn" id="executeBtn4" href="#executing_query">Execute Query</a>
+        <input type="button" class="closeBtn" id="closeQuery4" value="Close">
+      </form>
+    </div>
+    <div class="loginPop" id="loginForm">
+      <form class="form-container">
+        <h1>Login</h1>
+
+        <label for="database"><b>Database Name</b></label>
+        <input type="text" placeholder="Enter database name" name="dbName" id="enterDBName">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter username" name="user" id="enterUser">
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter password" name="pass" id="enterPass">
+
+        <a class="btn logBtn" id="logBtn" href="#logging_in">Login</a>
+        <input type="button" class="closeBtn" id="closeLogin" value="Close">
+      </form>
+    </div>
+    <div class="database">
+      <table class="dataBase">
+        <thead id="theadDB">
+        <tr>
+          <th class="tableDB">Table</th>
+        </tr>
+        </thead>
+        <div class="tbody-div">
+          <tbody id="bodyDB">
+        </div>
+      </table>
+   </div>
+   <div class="database-btns">
+     <a class="btn storeBtn" id="storeBtn" href="#store_all_files">Store All Files</a>
+     <a class="btn clearBtn" id="clearBtn" href="#clear_all_data">Clear All Data</a>
+     <a class="btn displayBtn" id="displayBtn" href="#display_db_status">Display DB Status</a>
+   </div>
+    <!--Leave me at the bottom of the body -->
+    <script src="/index.js"></script>
+</body>
+</html>

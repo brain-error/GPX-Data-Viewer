@@ -1,0 +1,554 @@
+/*Header*/
+.h_image {
+  background-image: url(gpsheader.jpg);
+  height: 150px;
+  width: 100%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/*File Log Panel*/
+.t_outer {
+  background-color: #ebf5f5;
+  padding: 100px;
+  font-size: 14pt;
+  font-family: Verdana, sans-serif;
+}
+
+
+h1 {
+  color: #052b3b;
+}
+
+
+.filelog {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  display: block;
+}
+
+.filelog tr, td, .gpsview tr, td {
+  border: 1px solid #00546e;
+}
+
+
+.filelog tbody {
+  background-color: white;
+  overflow-y: scroll;
+  display: block;
+  height: 320px;
+  word-break: break-all;
+}
+
+.tbody-status {
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  color: grey;
+}
+
+.filelog tbody tr:hover {
+  background-color: lightgrey;
+}
+
+.filelog td {
+  width: 16.6%;
+  height: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+.filelog thead {
+  display: block;
+}
+
+
+.filelog thead tr th.firstName, th.creator, th.version, th.numW, th.numT, th.numR {
+  width: 16.6%;
+  text-align: center;
+  background-color: #044552;
+  color: white;
+  padding: 20px;
+}
+
+
+td.name:hover {background-color: #f5f5f5;}
+
+/*Upload Button*/
+
+.upload {
+  cursor: pointer;
+  cursor: hand;
+  border-radius: 15px;
+  margin-top : 25px;
+  background-color: #044552;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-family: Verdana, sans-serif;
+}
+
+
+
+/*GPS View Panel*/
+
+.gps {
+  margin-top: 60px;
+}
+
+.gpsview {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.gpsview tbody  {
+  background-color: white;
+  overflow-y: scroll;
+  display: block;
+  height: 215px;
+  word-break: break-all;
+}
+
+.gpsview thead {
+  display: block;
+}
+
+.gpsview td {
+  width: 5%;
+  height: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+.gpsview thead tr th.comp, th.name, th.points, th.length, th.loop {
+  width: 10%;
+  height: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: #044552;
+  color: white;
+}
+/*Find Path*/
+.fp {
+    margin-top: 60px;
+}
+.findpath {
+  margin-top: 30px;
+}
+
+.findPath {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.findPath tbody  {
+  background-color: white;
+  overflow-y: scroll;
+  display: block;
+  height: 215px;
+  word-break: break-all;
+}
+
+.findPath thead {
+  display: block;
+}
+
+.findPath td {
+  width: 5%;
+  height: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+.findPath thead tr th.compFP, th.nameFP, th.pointsFP, th.lengthFP, th.loopFP {
+  width: 10%;
+  height: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: #044552;
+  color: white;
+}
+
+.findForm {
+  margin-top: 30px;
+  align-items: center;
+}
+
+.findBtn {
+  cursor: pointer;
+  cursor: hand;
+  border-radius: 15px;
+  margin-left : 15px;
+  background-color: #044552;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-family: Verdana, sans-serif;
+}
+
+/*Database Table*/
+.database {
+  margin-top: 30px;
+}
+
+.dataBase {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.dataBase tbody  {
+  background-color: white;
+  overflow-y: scroll;
+  display: block;
+  height: 215px;
+  word-break: break-all;
+}
+
+.dataBase td {
+  width:5%;
+  height: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+.dataBase thead tr th.tableDB {
+  width: 100%;
+  height: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: #044552;
+  color: white;
+}
+
+.log {
+  font-style: italic;
+}
+
+.dataBase thead tr th.routeId, th.routeName, th.routeLen, th.routeGPX {
+  width: 5%;
+  height: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: #044552;
+  color: white;
+}
+
+th.pointId, th.pointIndex, th.pointLat, th.pointLong, th.routeID, th.pointName {
+  width: 5%;
+  height: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: #044552;
+  color: white;
+}
+
+.loginBtn, .storeBtn, .clearBtn, .displayBtn, .queryBtn {
+  cursor: pointer;
+  cursor: hand;
+  border-radius: 15px;
+  margin-left : 15px;
+  background-color: #044552;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-family: Verdana, sans-serif;
+}
+
+
+.database-btns {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+/*Drop Down Reference: https://www.filamentgroup.com/lab/select-css.html*/
+.dropAdd, .dropQuery, .dropSort1, .dropSort2, .dropFile, .dropFile2, .dropRoute, .dropFile3 {
+  width: 230px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #444;
+  line-height: 1.3;
+  padding: .6em 1.4em .5em .8em;
+  box-sizing: border-box;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: .5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right .4em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+}
+.dropQuery {
+  width:380px;
+}
+.sF {
+  margin-top: 10px;
+}
+.drop, .chooseRT {
+	font-size: 16px;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	box-sizing: border-box;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+	linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+	background-repeat: no-repeat, repeat;
+	background-position: right .4em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+}
+.drop::-ms-expand {
+	display: none;
+}
+.drop:hover {
+	border-color: #888;
+}
+.drop:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+	outline: none;
+}
+.drop option {
+	font-weight:normal;
+}
+
+.moveDelta {
+  margin-left: 220px;
+}
+.moveFind {
+  margin-left: 340px;
+}
+.moveEnd {
+  margin-left: 25px;
+}
+
+.findForm {
+  margin-left: 400px;
+}
+
+/*Rename*/
+.rename, .chooseRT {
+  margin-left: 50px;
+}
+
+.rename, .show, .createGDOC, .routeAdd {
+  cursor: pointer;
+  cursor: hand;
+  border-radius: 15px;
+  margin-top : 25px;
+  background-color: #044552;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-family: Verdana, sans-serif;
+}
+
+div.text-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+div.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.textArea {
+  height: 250px;
+  width: 700px;
+}
+
+div.create {
+  float:right;
+  margin-top: -80px;
+}
+
+div.addRoute {
+  float:right;
+  margin-top: -90px;
+}
+
+.dropQuery {
+  float: right;
+}
+
+.queryBtn {
+  float: right;
+}
+
+.executeBtn {
+  margin-top: 20px;
+}
+
+
+/* The popup form - hidden by default */
+.renamePop {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.createPop {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.addRPop {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.loginPop {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.query1 {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.query2 {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.query3 {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.query4 {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+/* Add styles to the form container */
+.form-container {
+  width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.form-container .renameBtn, .createGPXBtn, .addRBtn, .addWBtn, .logBtn, .executeBtn {
+  background-color: #044552;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .closeBtn {
+  background-color: grey;
+}
+
+.form-container .closeBtn:hover, .rename:hover {
+  opacity: 1;
+}
+/*Media*/
+
+@media(max-width: 900px) {
+    html {
+        font-size: 14px !important;
+        width: 80% !important;
+    }
+}
+@media(max-width: 480px) {
+    html {
+        font-size: 12px !important;
+        width: 90% !important;
+    }
+}
+@media(max-width: 320px) {
+    html {
+        font-size: 12px !important;
+        width: 100% !important;
+    }
+}
